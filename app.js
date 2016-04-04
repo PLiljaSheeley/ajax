@@ -1,6 +1,6 @@
 $(function(){
 
-  var gifData = {};
+    
   var giffy = {};
   var userInput = 0;
 
@@ -14,23 +14,12 @@ $(function(){
       console.log(response);
       giffy = response;
       beginProcessinggiffy();
-      $('<img src="'+ giffy.data[0].embed_url +'">').load(function() {
-      $(this).appendTo('#img');
+      $('#img').attr('src',giffy.data[0].images.original.url);
+      
       });
-    })
-    //   $.ajax({
-    //   url: 'http://api.giphy.com/v1/gifs/search?q='+ userInput + '&api_key=dc6zaTOxFJmzC',
-    //   type: 'GET'
-    // }).done(function(response){
-    //   console.log(response);
-    //   giffy = response;
-    //   beginProcessinggiffy();
-    // })
-
-  }
-
+    }
   function beginProcessinggiffy(){
-    $("body").append("<p> " + giffy.data[0].bitly_url + "</p>");
+    $("body").append("<p> " + giffy.data[0].images.original.url + "</p>");
   }
   function getUserInput(){
     userInput = $("#theInput").val();
@@ -38,5 +27,8 @@ $(function(){
     return (userInput);
   }
 
+  })
 
-})
+
+
+
